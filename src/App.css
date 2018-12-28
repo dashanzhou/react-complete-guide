@@ -9,17 +9,28 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(5px + 2vmin);
   color: white;
 }
 
 .App-link {
-  color: #61dafb;
+  color: #d0f7cb;
+  padding: 10px;
+  margin: 16px auto;
+  font: bold;
+  font-style: normal;
+}
+
+.HttpCall {
+  margin:"20px auto";
+  display: "block";
+  text-align: center;
+  align-self: auto;
 }
 
 @keyframes App-logo-spin {
