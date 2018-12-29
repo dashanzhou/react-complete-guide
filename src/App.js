@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ManagePerson from './Component/Person/ManagePerson';
-import DisplayUser from './Component/Person/DisplayUser';
+import NewUser from './Component/Person/NewUser';
 import home from './Component/Home';
 import about from './Component/About';
 import contact from './Component/Contact';
@@ -10,6 +10,8 @@ import Navigation from './Component/Navigation';
 
 
 class App extends Component {
+  
+
   render() {
     return(
         <Router>
@@ -22,7 +24,7 @@ class App extends Component {
               <Route path="/home" component={home}/>
               <Route path="/about" component={about}/>
               <Route path="/contact" component={contact}/>
-              <Route path="/new" component={DisplayUser}/>
+              <Route path="/new" component={NewUser}/>
               <Route path="/person" component={ManagePerson}/>
               <Route component={Error}/>
             </Switch>

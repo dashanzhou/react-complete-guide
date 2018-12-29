@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../../App.css';
 import Person from './Person';
 
+
 class ManagePerson extends Component {
 
     constructor(props) {
@@ -11,7 +12,8 @@ class ManagePerson extends Component {
             {name: 'Max', age: 28},
             {name: 'nu', age: 29},
             {name: 'Stephanie', age: 29}
-            ]
+            ],
+            repos: null
         };
     }
     
@@ -24,7 +26,7 @@ class ManagePerson extends Component {
             {name: 'Manu', age: 29},
             {name: 'Stephanie', age: 31}
         ],
-        otherState: 'some other values'
+        repos: null
         })
     };
 
@@ -35,7 +37,7 @@ class ManagePerson extends Component {
             {name: event.target.value, age: 29},
             {name: 'Stephanie', age: 31}
         ],
-        otherState: 'some other values'
+        repos: null
         })
     };
 
@@ -67,6 +69,7 @@ class ManagePerson extends Component {
             <Person 
             name={this.state.persons[2].name} 
             age={this.state.persons[2].age} />
+
         </div>
         );
     }
