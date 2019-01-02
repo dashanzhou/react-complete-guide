@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../../App.css';
 import Person from './Person';
+import { connect } from 'react-redux';
 
 
 class ManagePerson extends Component {
@@ -13,10 +14,11 @@ class ManagePerson extends Component {
             {name: 'nu', age: 29},
             {name: 'Stephanie', age: 29}
             ],
-            repos: null
+            number: 21
         };
     }
     
+
     switchNameHandler = (newName) => {
         //console.log('was clicked!');
         //don't do this -  this.state.persons[0].name = 'Dashan';
@@ -26,9 +28,10 @@ class ManagePerson extends Component {
             {name: 'Manu', age: 29},
             {name: 'Stephanie', age: 31}
         ],
-        repos: null
+        number: null
         })
     };
+
 
     nameChangedHandler = (event) => {
         this.setState({
@@ -37,7 +40,7 @@ class ManagePerson extends Component {
             {name: event.target.value, age: 29},
             {name: 'Stephanie', age: 31}
         ],
-        repos: null
+        number: null
         })
     };
 
@@ -69,10 +72,30 @@ class ManagePerson extends Component {
             <Person 
             name={this.state.persons[2].name} 
             age={this.state.persons[2].age} />
-
+            <br/>
+            <div>
+                Number: <span>{this.props.number}</span>
+                <p>
+                    <button style={style} onClick={this.props.onNumberUp}>NumberUp</button>- 
+                    <button style={style} onClick={this.props.onNumberDown}>NumberDown</button>
+                </p>
+            </div>
         </div>
         );
     }
 }
 
-export default ManagePerson;
+const mapDispachToProps = (dispach) => {
+    return {
+        onNumberUp: () => dispach({type: 'NUMBER_UP'}),
+        onNumberDown: () => dispach({type: 'NUMBER_DOWN'})
+    }
+};
+
+const mapStateToProps = (state) => {
+    return {
+        number: state.number
+    }
+};
+
+export default connect(mapStateToProps, mapDispachToProps) (ManagePerson);

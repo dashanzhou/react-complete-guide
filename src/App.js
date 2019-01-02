@@ -7,6 +7,7 @@ import about from './Component/About';
 import contact from './Component/Contact';
 import Error from './Component/Error';
 import Navigation from './Component/Navigation';
+import ValiationForm from './Component/ValidationForm';
 
 
 class App extends Component {
@@ -25,6 +26,7 @@ class App extends Component {
               <Route path="/about" component={about}/>
               <Route path="/contact" component={contact}/>
               <Route path="/new" component={NewUser}/>
+              <Route path="/join" component={ValiationForm}/>
               <Route path="/person" component={ManagePerson}/>
               <Route component={Error}/>
             </Switch>
