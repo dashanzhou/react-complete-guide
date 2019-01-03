@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import loginAuth from './Component/loginAuth';
 import ManagePerson from './Component/Person/ManagePerson';
 import NewUser from './Component/Person/NewUser';
 import home from './Component/Home';
@@ -10,8 +11,8 @@ import Navigation from './Component/Navigation';
 import ValiationForm from './Component/ValidationForm';
 
 
+
 class App extends Component {
-  
 
   render() {
     return(
@@ -25,6 +26,7 @@ class App extends Component {
               <Route path="/home" component={home}/>
               <Route path="/about" component={about}/>
               <Route path="/contact" component={contact}/>
+              <Route path="/login" component={loginAuth} />
               <Route path="/new" component={NewUser}/>
               <Route path="/join" component={ValiationForm}/>
               <Route path="/person" component={ManagePerson}/>

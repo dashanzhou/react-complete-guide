@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 class ManagePerson extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             persons: [
             {name: 'Max', age: 28},
@@ -59,19 +59,20 @@ class ManagePerson extends Component {
             <h1>Hi, I'm a React App</h1>
             <p>This is really working!</p>
             <button 
-            style={style}
-            onClick={() => this.switchNameHandler('Dashan!!')}> switch name </button>
+                style={style}
+                onClick={() => this.switchNameHandler('Dashan!!')}> switch name 
+            </button>
             <Person 
-            name={this.state.persons[0].name} 
-            age={this.state.persons[0].age} />
+                name={this.state.persons[0].name} 
+                age={this.state.persons[0].age} />
             <Person 
-            name={this.state.persons[1].name} 
-            age={this.state.persons[1].age}
-            click={this.switchNameHandler.bind(this, 'Max!')}
-            changed={this.nameChangedHandler}>My Hobbies: Racing </Person>
+                name={this.state.persons[1].name} 
+                age={this.state.persons[1].age}
+                click={this.switchNameHandler.bind(this, 'Max!')}
+                changed={this.nameChangedHandler}>My Hobbies: Racing </Person>
             <Person 
-            name={this.state.persons[2].name} 
-            age={this.state.persons[2].age} />
+                name={this.state.persons[2].name} 
+                age={this.state.persons[2].age} />
             <br/>
             <div>
                 Number: <span>{this.props.number}</span>
@@ -85,10 +86,10 @@ class ManagePerson extends Component {
     }
 }
 
-const mapDispachToProps = (dispach) => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        onNumberUp: () => dispach({type: 'NUMBER_UP'}),
-        onNumberDown: () => dispach({type: 'NUMBER_DOWN'})
+        onNumberUp: () => dispatch({type: 'NUMBER_UP'}),
+        onNumberDown: () => dispatch({type: 'NUMBER_DOWN'})
     }
 };
 
@@ -98,4 +99,4 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps, mapDispachToProps) (ManagePerson);
+export default connect(mapStateToProps, mapDispatchToProps) (ManagePerson);
