@@ -55,33 +55,33 @@ class ManagePerson extends Component {
         };
 
         return (
-        <div className="App">
-            <h1>Hi, I'm a React App</h1>
-            <p>This is really working!</p>
-            <button 
-                style={style}
-                onClick={() => this.switchNameHandler('Dashan!!')}> switch name 
-            </button>
-            <Person 
-                name={this.state.persons[0].name} 
-                age={this.state.persons[0].age} />
-            <Person 
-                name={this.state.persons[1].name} 
-                age={this.state.persons[1].age}
-                click={this.switchNameHandler.bind(this, 'Max!')}
-                changed={this.nameChangedHandler}>My Hobbies: Racing </Person>
-            <Person 
-                name={this.state.persons[2].name} 
-                age={this.state.persons[2].age} />
-            <br/>
-            <div>
-                Number: <span>{this.props.number}</span>
-                <p>
-                    <button style={style} onClick={this.props.onNumberUp}>NumberUp</button>- 
-                    <button style={style} onClick={this.props.onNumberDown}>NumberDown</button>
-                </p>
+            <div className="App">
+                <h1>Hi, I'm a React App</h1>
+                <p>This is really working!</p>
+                <button 
+                    style={style}
+                    onClick={() => this.switchNameHandler('Dashan!!')}> switch name 
+                </button>
+                <Person 
+                    name={this.state.persons[0].name} 
+                    age={this.state.persons[0].age} />
+                <Person 
+                    name={this.state.persons[1].name} 
+                    age={this.state.persons[1].age}
+                    click={this.switchNameHandler.bind(this, 'Max!')}
+                    changed={this.nameChangedHandler}>My Hobbies: Racing </Person>
+                <Person 
+                    name={this.state.persons[2].name} 
+                    age={this.state.persons[2].age} />
+                <br/>
+                <div>
+                    Number: <span>{this.props.number}</span>
+                    <p>
+                        <button style={style} onClick={this.props.onNumberUp}>NumberUp</button>- 
+                        <button style={style} onClick={this.props.onNumberDown}>NumberDown</button>
+                    </p>
+                </div>
             </div>
-        </div>
         );
     }
 }
