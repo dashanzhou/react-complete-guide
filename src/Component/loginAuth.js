@@ -7,11 +7,12 @@ import {
   withRouter
 } from "react-router-dom";
 
+
 let globalState = null;
 
 const loginAuth = (props) =>{
   globalState = props.isAuthenticated;
-  let name = props.name;
+
   return (
     <Router>
       <div>
@@ -33,13 +34,13 @@ const loginAuth = (props) =>{
 }
 
 const fakeAuth = {
-  isAuthenticated: false,
+
   authenticate(cb) {
-    this.isAuthenticated = true;
+    console.log('globalState: ' + globalState);
     setTimeout(cb, 100); // fake async
   },
-  signout(cb) {
-    this.isAuthenticated = false;
+  goback(cb) {
+    console.log('globalState: ' + globalState);
     setTimeout(cb, 100);
   }
 };
@@ -52,10 +53,10 @@ const AuthButton = withRouter(
         Welcome!{" "}
         <button
           onClick={() => {
-            fakeAuth.signout(() => history.push("/"));
+            fakeAuth.goback(() => history.push("/"));
           }}
         >
-          Sign out
+          Go Back!
         </button>
       </p>
     ) : (

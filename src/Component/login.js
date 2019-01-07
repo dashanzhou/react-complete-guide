@@ -8,63 +8,81 @@ import {
 } from "react-router-dom";
 import { connect } from 'react-redux';
 import  LoginAuth   from './loginAuth';
-import Contact from './Contact';
 
 class Login extends React.Component {
   
     constructor(props) {
       super(props);
+      this.handleLoginClick = this.handleLoginClick.bind(this);
+      this.handleLogoutClick = this.handleLogoutClick.bind(this);
       this.state = {
         redirectToReferrer: false 
       };
     }
     
-  
-    login = (props) => {
-      this.props.onLoggedIn();
-      console.log('clicking login: ' + this.props.isAuthenticated);
+    handleLoginClick = (props) => {
+        this.props.onLoggedIn();
+        console.log('clicking login: ' + this.props.isAuthenticated);
     }
   
-    logout = (props) => {
-      this.props.onLoggedOut();
-      console.log('clicking login: ' + this.props.isAuthenticated);
+    handleLogoutClick = (props) => {
+        this.props.onLoggedOut();
+        console.log('clicking login: ' + this.props.isAuthenticated);
     }
   
-    // AuthHandle = (props) => {
-    //   if (this.props.authenticate )
-    //     return (<p> Welcome! <button onClick={() => { this.logout(props); }}>Sign out</button> </p>);
-    //   else 
-    //     return (<p>You are not logged in.</p>);
-    // }
-  
+ 
     render() {
-      let { from } = this.props.location.state || { from: { pathname: "/" } };
-      let { redirectToReferrer } = this.state;
-  
-      if (redirectToReferrer) return <Redirect to={from} />;
+        let { from } = this.props.location.state || { from: { pathname: "/" } };
+        let { redirectToReferrer } = this.state;
+    
+        if (redirectToReferrer) return <Redirect to={from} />;
 
-      return (
-        <div className='Body'>
-          <p><LoginAuth name='test'/></p>
-          
-          <p>You must log in to view the page at {from.pathname}</p>
-          <button onClick={this.login}>Log in</button>
-        </div>
-      );
+        let button;
+
+        if (this.props.isAuthenticated) {
+            button = <LogoutButton onClick={this.handleLogoutClick} />;
+        } else {
+            button = <LoginButton onClick={this.handleLoginClick} />;
+        }
+        
+        return (
+            <div className='Body'>
+
+                <p><LoginAuth isAuthenticated={this.props.isAuthenticated}/></p>
+                
+                <p>You must log in to view the page at {from.pathname}</p>
+                {button}
+            </div>
+        );
     }
-  }
+}
+ 
+function LoginButton(props) {
+    return (
+      <button onClick={props.onClick}>
+        Login
+      </button>
+    );
+}
   
-  const mapActionToProps = (dispatch) => {
+function LogoutButton(props) {
+    return (
+      <button onClick={props.onClick}>
+        Logout
+      </button>
+    );
+}
+const mapActionToProps = (dispatch) => {
     return {
         onLoggedIn: () => dispatch({type: 'LOG_IN'}),
         onLoggedOut: () => dispatch({type: 'LOG_OUT'})
     }
-  };
-  
-  const mapStatesToProps = (state) => {
+};
+
+const mapStatesToProps = (state) => {
     return {
         isAuthenticated: state.isAuthenticated
     }
-  };
-  
-  export default connect(mapStatesToProps, mapActionToProps) (Login);
+};
+
+export default connect(mapStatesToProps, mapActionToProps) (Login);
