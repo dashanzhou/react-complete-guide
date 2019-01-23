@@ -9,6 +9,33 @@ const initialState = {
   passwordError: ""
 };
 
+const MyInput = (props) => {
+  return (
+    <input 
+      ref={props.inputRef}
+      type="text" /> 
+  )
+}
+
+const FuncCustomComp = () => {
+
+  let inputRef = null;
+  
+  const onClickHandle = () => {
+    inputRef.focus();
+  }
+
+  return (
+    <div>
+      <span>My input:</span>
+      <MyInput 
+        inputRef={(input) => {inputRef = input }} />
+      <button 
+        onClick={onClickHandle}>input</button>
+    </div>
+  )
+}
+
 export default class ValiationForm extends React.Component {
   state = initialState;
 
@@ -56,13 +83,37 @@ export default class ValiationForm extends React.Component {
     }
   };
 
+  onKeyUpHandle = (target, e) => {
+    
+    if (e.keyCode === 13) {
+      switch (target) {
+        case 'name':
+          this.email.focus();
+          break;
+        case 'email':
+          this.password.focus();
+          break;
+        case 'password':
+          this.submit.focus();
+          break;
+        default: 
+          this.name.focus();
+          break;
+      }
+    }
+  }
+
+
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="Body">
+        <FuncCustomComp />
         <div>
           <input
             name="name"
             placeholder="name"
+            ref={ (input) => { this.name = input} }
+            onKeyUp={this.onKeyUpHandle.bind(this, 'name')}
             value={this.state.name}
             onChange={this.handleChange}
           />
@@ -75,6 +126,8 @@ export default class ValiationForm extends React.Component {
             name="email"
             placeholder="email"
             value={this.state.email}
+            ref={ (input) => { this.email = input} }
+            onKeyUp={this.onKeyUpHandle.bind(this, 'email')}
             onChange={this.handleChange}
           />
           <div style={{ fontSize: 12, color: "red" }}>
@@ -86,6 +139,8 @@ export default class ValiationForm extends React.Component {
             type="password"
             name="password"
             placeholder="password"
+            ref={ (input) => { this.password = input} }
+            onKeyUp={this.onKeyUpHandle.bind(this, 'password')}
             value={this.state.password}
             onChange={this.handleChange}
           />
@@ -93,7 +148,10 @@ export default class ValiationForm extends React.Component {
             {this.state.passwordError}
           </div>
         </div>
-        <button type="submit">submit</button>
+        <input type="submit" 
+          ref={ (input) => { this.submit = input} }
+          onKeyUp={this.onKeyUpHandle.bind(this, 'submit')}
+          value="submit" />
       </form>
     );
   }
