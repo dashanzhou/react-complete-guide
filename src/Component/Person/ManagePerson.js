@@ -63,6 +63,7 @@ class ManagePerson extends Component {
                     onClick={() => this.switchNameHandler('Dashan!!')}> switch name 
                 </button>
                 <Person 
+                    greeting="Hello"
                     name={this.state.persons[0].name} 
                     age={this.state.persons[0].age} />
                 <Person 
