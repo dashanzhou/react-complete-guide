@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { Provider } from 'react-redux';
-import { Provider as mProvider } from 'mobx-react';
+//import { Provider } from 'react-redux';
+import { Provider } from 'mobx-react';
 import { createStore } from 'redux';
 import reducer from './Store/Reducer';
 import BirdStore from './Store/BirdsStore';
@@ -12,9 +12,9 @@ import BirdStore from './Store/BirdsStore';
 const store = createStore(reducer);
 
 const Root = (
-    <mProvider BirdStore={BirdStore}>
+    <Provider BirdStore={BirdStore}>
         <App />
-    </mProvider>
+    </Provider>
 )
 
 //ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));

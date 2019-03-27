@@ -9,7 +9,7 @@ import contact from './Component/Contact';
 import Error from './Component/Error';
 import Navigation from './Component/Navigation';
 import ValiationForm from './Component/ValidationForm';
-
+import Birds from './Component/Birds';
 
 
 class App extends Component {
@@ -30,6 +30,7 @@ class App extends Component {
               <Route path="/new" component={NewUser}/>
               <Route path="/join" component={ValiationForm}/>
               <Route path="/person" component={ManagePerson}/>
+              <Route path="/birds" component={Birds}/>
               <Route component={Error}/>
             </Switch>
             

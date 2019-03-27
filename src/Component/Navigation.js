@@ -12,6 +12,7 @@ const Navigation = () =>  {
             <NavLink className="App-link" to="/person">Display Person</NavLink> | 
             <NavLink className="App-link" to="/contact">Contact</NavLink> | 
             <NavLink className="App-link" to="/login">Login</NavLink>
+            <NavLink className="App-link" to="/birds">Birds</NavLink>
         </div>
     );
 }
